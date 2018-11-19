@@ -2,12 +2,12 @@
 import React from 'react';
 import { Router, Route } from 'react-router'
 
-import App from './components/App';
 import NotFound from './components/NotFound';
+import MainPage from './components/MainPage';
 
 const Routes = (props) => (
   <Router {...props}>
-    <Route path="/" component={App} />
+    <Route path="/" component={MainPage} />
     <Route path="*" component={NotFound} />
   </Router>
 );
