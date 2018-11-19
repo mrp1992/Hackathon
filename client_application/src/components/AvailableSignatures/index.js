@@ -16,10 +16,6 @@ for (let i = 0; i < 5; i++) {
 
 class AvailableSignatures extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <List
