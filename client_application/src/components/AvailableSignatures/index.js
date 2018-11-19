@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 
 import { PropTypes } from 'prop-types';
-import { Icon, List, Avatar } from 'antd';
+import { List, Avatar } from 'antd';
 
 const listData = [];
 for (let i = 0; i < 23; i++) {
@@ -13,13 +13,6 @@ for (let i = 0; i < 23; i++) {
         img: 'https://daily.jstor.org/wp-content/uploads/2014/11/NapoleonSignature2_1050x700.jpg'
     });
 }
-
-const IconText = ({ type, text }) => (
-    <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-        {text}
-  </span>
-);
 
 class AvailableSignatures extends Component {
 
