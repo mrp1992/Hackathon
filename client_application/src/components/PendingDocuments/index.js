@@ -35,7 +35,7 @@ class PendingDocuments extends Component {
                     {this.renderContentColumn()}
                 </Col>
                 <Col span={6}>
-                    <AvailableSignatures />
+                    {!this.state.isList && <AvailableSignatures />}
                 </Col>
             </Row>
         );
