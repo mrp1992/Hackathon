@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 import { List, Avatar } from 'antd';
 
 const listData = [];
-for (let i = 0; i < 23; i++) {
+for (let i = 0; i < 5; i++) {
     listData.push({
         href: 'http://ant.design',
         title: `Signature - ${i}`,

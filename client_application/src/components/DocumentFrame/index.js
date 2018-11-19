@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Divider } from 'antd';
-import {Row, Col, Layout} from 'antd';
+import { Card, Divider, Button, Row, Col, Layout } from 'antd';
 import Iframe from 'react-iframe';
+import SignatureApp from '../SignatureApp';
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
@@ -63,7 +63,12 @@ class DocumentFrame extends Component {
                         </Content>
                         <Footer>
                             <Row>
-                                <Col xs={12}>
+                                <Col xs={16}>
+                                    <SignatureApp />
+                                </Col>
+                                <Col xs={8}>
+                                    <Row style={{margin: '10px'}}><Button type="primary" size="large" block>Submit</Button></Row>
+                                    <Row style={{margin: '10px'}}><Button type="primary" size="large" block>Cancel</Button></Row>
                                 </Col>
                             </Row>
                         </Footer>
