@@ -1,34 +1,79 @@
 import React, { Component } from 'react';
+//import Safe from 'react-safe';
+//import Iframe from 'react-iframe';
+import CanvasDraw from "react-canvas-draw";
+import tools from "../../index.css";
 
 
 class SignatureApp extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            canvas: null,
-            context: null,
-            canvasWidth: 490,
-            canvasHeight: 220,
-            padding: 25,
-            lineWidth: 8,
-        }
+    state = {
+        color: "#000000",
+        width: 350,
+        height: 150
+    };
+
+    defaultProps = {
+        loadTimeOffset: 5,
+        lazyRadius: 0,
+        brushRadius: 2,
+        brushColor: "#000000",
+        catenaryColor: "#0a0302",
+        gridColor: "rgba(150,150,150,0.17)",
+        hideGrid: false,
+        canvasWidth: 400,
+        canvasHeight: 200,
+        disabled: false,
+        imgSrc: ""
+    };
+
+    componentDidMount() {
+
     }
 
-    openDocument = (event) => {
-        console.log(event.target.value);
-        this.setState({
-            ...this.state,
-            isList: false
-        })
-    }
+render() {
+    return (
+      <div>
+        <CanvasDraw
+          ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
+          brushColor={this.state.color}
+          canvasWidth={this.state.width}
+          canvasHeight={this.state.height}
+          lazyRadius={0}
+          brushRadius={1}
+        />
 
-    render() {
-        return(
-          <div id="canvasDiv">Signature App</div>
-        );
-    }
+        <div className={tools}>
+          <button
+            onClick={() => {
+              localStorage.setItem(
+                "savedDrawing",
+                this.saveableCanvas.getSaveData()
+              );
+            }}
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.clear();
+            }}
+          >
+            Clear
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.undo();
+            }}
+          >
+            Undo
+          </button>
 
+        </div>
+
+      </div>
+    );
+  }
 }
 
 export default SignatureApp;

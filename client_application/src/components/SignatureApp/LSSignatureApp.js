@@ -241,5 +241,4 @@ function redraw()
 	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 }
 
-
 /**/
