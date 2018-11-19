@@ -1,6 +1,6 @@
 // src/components/About/index.js
 import React, { Component } from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Divider } from 'antd';
 import PendingDocuments from '../PendingDocuments';
 import './style.css';
 
@@ -19,9 +19,10 @@ class MainPage extends Component {
             <Header className="header">
                 <div className="container" style={{ maxWidth: "1500px"}}>
                     <div className="app-title" >
-                        Client Document Verification
+                        LetSIGN
                     </div>
                 </div>
+                <Divider className="app-title-divider"/>
             </Header>
             <Content style={{ padding: '0 50px' }}>
                 <Layout style={{ padding: '24px 0', background: '#fff' }}>

@@ -2,7 +2,12 @@
     float: left;
     text-decoration: none;
     line-height: 64px;
-    font-size: 21px;
+    font-size: 42px;
     display: inline-block;
     text-decoration: none;
+}
+
+.app-title-divider {
+    background-color: '#990000'!;
+    height: 4pt;
 }
