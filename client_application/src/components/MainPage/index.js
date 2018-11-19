@@ -1,7 +1,7 @@
 // src/components/About/index.js
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
-
+import PendingDocuments from '../PendingDocuments';
 import './style.css';
 
 const { SubMenu } = Menu;
@@ -47,7 +47,7 @@ class MainPage extends Component {
                         </Menu>
                     </Sider>
                     <Content style={{ padding: '0 24px', minHeight: 280 }}>
-                        Content
+                        <PendingDocuments/>
                     </Content>
                 </Layout>
             </Content>
