@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon, Divider } from 'antd';
 import PendingDocuments from '../PendingDocuments';
+import Logo from './resources/letsign.png';
 import './style.css';
 
 const { SubMenu } = Menu;
@@ -16,10 +17,10 @@ class MainPage extends Component {
   render() {
     return (
         <Layout>
-            <Header className="header">
+            <Header className="header" style={{height: '100%'}}>
                 <div className="container" style={{ maxWidth: "1500px"}}>
                     <div className="app-title" >
-                        LetSIGN
+                        <img width={120} src={Logo} />
                     </div>
                 </div>
                 <Divider className="app-title-divider"/>
