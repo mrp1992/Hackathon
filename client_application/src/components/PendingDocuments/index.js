@@ -109,10 +109,6 @@ class PendingDocuments extends Component {
         return(
             <div>
                 <Row>
-                    <h2>Pending Documents</h2>
-                    <Divider/>
-                </Row>
-                <Row>
                     <Col xs={this.state.isList ? 24 : 18 }>
                         {this.renderContentColumn()}
                     </Col>

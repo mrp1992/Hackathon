@@ -7,10 +7,6 @@ class CompletedDocuments extends Component {
         return(
             <div>
                 <Row>
-                    <h2>Completed Documents</h2>
-                    <Divider/>
-                </Row>
-                <Row>
                 </Row>
             </div>
         );
