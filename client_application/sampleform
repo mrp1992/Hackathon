@@ -1,0 +1,25 @@
+<Form>
+        <FormItem>
+        <Input
+          size="large"
+          name="name"
+          autoComplete="off"
+          placeholder="YouTrack Project Name"/>
+        </FormItem>
+
+        <FormItem>
+        <Input
+          size="large"
+          name="name"
+          autoComplete="off"
+          placeholder="Frequency"/>
+        </FormItem>
+        
+        <FormItem>
+        <Input
+          size="large"
+          name="name"
+          autoComplete="off"
+          placeholder="Starting from"/>
+        </FormItem>
+      </Form>
