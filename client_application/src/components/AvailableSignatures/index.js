@@ -3,7 +3,7 @@ import './style.css';
 import CanvasDraw from "react-canvas-draw";
 
 import { PropTypes } from 'prop-types';
-import { List, Avatar,Button, Drawer } from 'antd';
+import { Row, Col, List, Avatar,Button, Drawer } from 'antd';
 
 class AvailableSignatures extends Component {
 
@@ -20,6 +20,7 @@ class AvailableSignatures extends Component {
     loadSignatures(maxCount) {
         var signatureList = [];
         var i = 0;
+        //var allEntries = JSON.parse(localStorage.getItem("savedSignature")) || [];
         var allEntries = JSON.parse(localStorage.getItem("savedSignature")) || [];
         allEntries.reverse();
         allEntries.forEach((entry) => {
@@ -71,7 +72,7 @@ class AvailableSignatures extends Component {
                   });
     }
 
-    drawCanvas = (item) => {
+    drawCanvas1 = (item) => {
         return (<CanvasDraw
           disabled
           ref={canvasDraw => {
@@ -83,6 +84,15 @@ class AvailableSignatures extends Component {
           canvasWidth={100}
           canvasHeight={60}
         />);
+    }
+
+    drawCanvas = (item) => {
+        return (
+        <Row>
+            <Col xs={18} offset={6}><img width={100} height={60} margin={60} alt="signature" src={item.img}/></Col>
+        </Row>
+        );
+
     }
 
     render() {
@@ -106,7 +116,6 @@ class AvailableSignatures extends Component {
                                 <List.Item.Meta
                                     avatar={<Avatar icon="edit" />}
                                     title={<a href={item.href}>{item.title}</a>}
-                                    description={item.description}
                                 />
                                     {this.drawCanvas(item)}
                             </List.Item>

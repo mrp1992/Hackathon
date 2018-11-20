@@ -4,6 +4,8 @@ import { Card, Divider, Button, Row, Col, Layout } from 'antd';
 import Iframe from 'react-iframe';
 import SignatureApp from '../SignatureApp';
 import { base64ToString } from './services';
+import {html2canvas} from 'html2canvas';
+import {jsPDF} from 'jspdf';
 
 
 const { Content, Footer } = Layout;
@@ -50,8 +52,25 @@ class DocumentFrame extends Component {
         }
     };
 
+    generatePdfDocument(id) {
+        const input = document.getElementById(id);
+        html2canvas(input)
+          .then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'JPEG', 0, 0);
+            pdf.save("download.pdf");
+          })
+        ;
+      }
+
     accept = () => {
         this.signatureAppRef.current.saveToLocalStorage();
+        var image = this.signatureAppRef.current.getImageUrl();
+        var pdf = this.generatePdfDocument('reviewContentCard');
+        console.log(image);
+        console.log(pdf)
+        this.signatureAppRef.current.clearSign();
     }
 
     reject = () => {
@@ -65,14 +84,17 @@ class DocumentFrame extends Component {
                     <Layout>
                         <Content>
                             <Divider orientation="left">{this.props.document.title}</Divider>
-                            <Card
-                                hoverable
-                                cover={this.renderDocument(this.props.document)}
-                            >
-                                <Meta description={`Due On: ${this.props.document.dueOn}`}/>
-                            </Card>
-
+                            <div id='reviewContentCard'>
+                                <Card
+                                    hoverable
+                                    cover={this.renderDocument(this.props.document)}
+                                >
+                                    <Meta description={`Due On: ${this.props.document.dueOn}`}/>
+                                </Card>
+                            </div>
                         </Content>
+
+
                         <Footer>
                             <Row>
                                 <Col xs={18}>
@@ -84,6 +106,7 @@ class DocumentFrame extends Component {
                                 </Col>
                             </Row>
                         </Footer>
+
                     </Layout>
                 </Col>
             </Row>
