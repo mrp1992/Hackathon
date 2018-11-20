@@ -18,7 +18,7 @@ class SignatureApp extends Component {
         localStorage.setItem("savedSignature",JSON.stringify(allEntries));
     };
 
-    componentDidMount() {
+    componentWillMount() {
 
     }
 
@@ -48,14 +48,6 @@ render() {
           >
             Clear
           </button>
-          <button
-            onClick={() => {
-              this.saveableCanvas.undo();
-            }}
-          >
-            Undo
-          </button>
-
         </div>
 
       </div>
