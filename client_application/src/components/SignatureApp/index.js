@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-//import Safe from 'react-safe';
-//import Iframe from 'react-iframe';
+import React, { Component } from "react";
 import CanvasDraw from "react-canvas-draw";
+import PropTypes from 'prop-types';
 import tools from "../../index.css";
 
 
@@ -13,18 +12,10 @@ class SignatureApp extends Component {
         height: 150
     };
 
-    defaultProps = {
-        loadTimeOffset: 5,
-        lazyRadius: 0,
-        brushRadius: 2,
-        brushColor: "#000000",
-        catenaryColor: "#0a0302",
-        gridColor: "rgba(150,150,150,0.17)",
-        hideGrid: false,
-        canvasWidth: 400,
-        canvasHeight: 200,
-        disabled: false,
-        imgSrc: ""
+    saveToLocalStorage = () => {
+        var allEntries = JSON.parse(localStorage.getItem("savedSignature")) || [];
+        allEntries.push(this.saveableCanvas.getSaveData());
+        localStorage.setItem("savedSignature",JSON.stringify(allEntries));
     };
 
     componentDidMount() {
@@ -45,11 +36,7 @@ render() {
 
         <div className={tools}>
           <button
-            onClick={() => {
-              localStorage.setItem(
-                "savedDrawing",
-                this.saveableCanvas.getSaveData()
-              );
+            onClick={() => {this.saveToLocalStorage();
             }}
           >
             Save
@@ -75,5 +62,12 @@ render() {
     );
   }
 }
+
+SignatureApp.PropTypes = {
+    saveCallBack: PropTypes.func,
+    brushColor: PropTypes.string,
+    canvasWidth: PropTypes.int,
+    canvasHeight: PropTypes.int
+};
 
 export default SignatureApp;

@@ -70,13 +70,13 @@ class PendingDocuments extends Component {
     getThumbnail = (type) => {
         switch(type) {
             case 'PDF':
-                return <img width={'80px'} height={'200px'} alt="logo" src={PDF} />;
+                return <img width={'80px'} height={'100px'} alt="logo" src={PDF} />;
             case 'IMG':
-                return <img width={'80px'} height={'200px'} alt="logo" src={Image} />;
+                return <img width={'80px'} height={'100px'} alt="logo" src={Image} />;
             case 'HTML':
-                return <img width={'80px'} height={'200px'} alt="logo" src={HTML} />;
+                return <img width={'80px'} height={'100px'} alt="logo" src={HTML} />;
             default:
-                return <img width={'80px'} height={'200px'} alt="logo" src={Document} />;
+                return <img width={'80px'} height={'100px'} alt="logo" src={Document} />;
         }
     }
 
@@ -88,7 +88,7 @@ class PendingDocuments extends Component {
                     return <div style={{padding: '10px'}}>
                                 <Card
                                 hoverable
-                                style={{ width: 240 }}
+                                style={{ width: 120 }}
                                 cover={this.getThumbnail(item.type)}
                                 onClick={() => this.openDocument(item)}
                             >
