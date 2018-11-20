@@ -4,8 +4,9 @@ import { Card, Divider, Button, Row, Col, Layout } from 'antd';
 import Iframe from 'react-iframe';
 import SignatureApp from '../SignatureApp';
 import { base64ToString } from './services';
-import {html2canvas} from 'html2canvas';
-import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { browserHistory } from 'react-router';
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
@@ -53,11 +54,14 @@ class DocumentFrame extends Component {
 
     generatePdfDocument(id) {
         const input = document.getElementById(id);
+        console.log(input);
         html2canvas(input).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
+            console.log(imgData);
             const pdf = new jsPDF();
-            pdf.addImage(imgData, 'JPEG', 0, 0);
+            pdf.addImage(this.signatureAppRef.current.getImageUrl(), 'JPEG', 15, 40, 180, 160);
             pdf.save("download.pdf");
+            return pdf;
           })
         ;
       }
@@ -66,9 +70,9 @@ class DocumentFrame extends Component {
         this.signatureAppRef.current.saveToLocalStorage();
         var image = this.signatureAppRef.current.getImageUrl();
         var pdf = this.generatePdfDocument('reviewContentCard');
-        console.log(image);
-        console.log(pdf)
         this.signatureAppRef.current.clearSign();
+        browserHistory.push('/lsapp');
+
     }
 
     reject = () => {

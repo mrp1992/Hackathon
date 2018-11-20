@@ -30,6 +30,15 @@ class HorizontalLoginForm extends React.Component {
     });
   }
 
+  toggleType(id) {
+    var x = document.getElementById(id);
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
   render() {
     const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
 
@@ -48,9 +57,19 @@ class HorizontalLoginForm extends React.Component {
                     </div>
                     <Divider className="app-title-divider"/>
                 </Header>
-                <Content style={{ padding: '50px 50px 50px 50px' }}>
+                <Content style={{ padding: '200px 200px 200px 200px' }}>
                     <div className="card-container">
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form layout="vertical" onSubmit={this.handleSubmit}>
+                                <FormItem
+                                     validateStatus={passwordError ? 'error' : ''}
+                                     help={passwordError || ''}
+                                   >
+                                     {getFieldDecorator('password', {
+                                       rules: [{ required: true, message: 'Please input your Password!' }],
+                                     })(
+                                       <Input id="pwd" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} click="toggleType('pwd')"/>} type="password" placeholder="Password" />
+                                     )}
+                                   </FormItem>
                                 <FormItem
                                   validateStatus={userNameError ? 'error' : ''}
                                   help={userNameError || ''}
@@ -58,26 +77,17 @@ class HorizontalLoginForm extends React.Component {
                                   {getFieldDecorator('userName', {
                                     rules: [{ required: true, message: 'Please input your username!' }],
                                   })(
-                                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Token Id" />
+                                    <Input id="tokenId" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} click="toggleType('tokenId')" />} type="password" placeholder="Token Id" />
                                   )}
                                 </FormItem>
-                                <FormItem
-                                  validateStatus={passwordError ? 'error' : ''}
-                                  help={passwordError || ''}
-                                >
-                                  {getFieldDecorator('password', {
-                                    rules: [{ required: true, message: 'Please input your Password!' }],
-                                  })(
-                                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
-                                  )}
-                                </FormItem>
+
                                 <FormItem>
                                   <Button
                                     type="primary"
                                     htmlType="submit"
                                     disabled={hasErrors(getFieldsError())}
                                   >
-                                    Log in
+                                    Review Document
                                   </Button>
                                 </FormItem>
                               </Form>

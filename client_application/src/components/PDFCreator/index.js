@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
 class PDFCreator extends Component {
   constructor(props) {
     super(props);
