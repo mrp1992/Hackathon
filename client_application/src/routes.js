@@ -4,12 +4,12 @@ import { Router, Route } from 'react-router'
 
 import NotFound from './components/NotFound';
 import MainPage from './components/MainPage';
-import SignatureApp from './components/SignatureApp';
+import WrappedHorizontalLoginForm from './components/Login';
 
 const Routes = (props) => (
   <Router {...props}>
-    <Route path="/" component={MainPage} />
-    <Route path="/SignatureApp/*" component={SignatureApp} />
+    <Route path="/" component={WrappedHorizontalLoginForm} />
+    <Route path="/lsapp" component={MainPage} />
     <Route path="*" component={NotFound} />
   </Router>
 );

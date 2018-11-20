@@ -20,7 +20,6 @@ class AvailableSignatures extends Component {
     loadSignatures(maxCount) {
         var signatureList = [];
         var i = 0;
-        //var allEntries = JSON.parse(localStorage.getItem("savedSignature")) || [];
         var allEntries = JSON.parse(localStorage.getItem("savedSignature")) || [];
         allEntries.reverse();
         allEntries.forEach((entry) => {

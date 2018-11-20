@@ -40,7 +40,7 @@ class MainPage extends Component {
                 </div>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
-                Credit Suisse ©2018 Client Document Signature Verification
+                Credit Suisse ©2018 LetSIGN Document Verification & Signature
             </Footer>
         </Layout>
     );

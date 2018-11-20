@@ -7,7 +7,6 @@ import { base64ToString } from './services';
 import {html2canvas} from 'html2canvas';
 import {jsPDF} from 'jspdf';
 
-
 const { Content, Footer } = Layout;
 const { Meta } = Card;
 
@@ -54,8 +53,7 @@ class DocumentFrame extends Component {
 
     generatePdfDocument(id) {
         const input = document.getElementById(id);
-        html2canvas(input)
-          .then((canvas) => {
+        html2canvas(input).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF();
             pdf.addImage(imgData, 'JPEG', 0, 0);
