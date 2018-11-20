@@ -1,6 +1,6 @@
 // src/components/About/index.js
 import React, { Component } from 'react';
-import { Layout, Row, Divider } from 'antd';
+import { Layout, Divider } from 'antd';
 import PendingDocuments from '../PendingDocuments';
 import CompletedDocuments from '../CompletedDocuments';
 import { Tabs } from 'antd';

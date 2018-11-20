@@ -71,6 +71,18 @@ class AvailableSignatures extends Component {
                   });
     }
 
+    drawCanvas = (item) => {
+        return <CanvasDraw
+            disabled
+            ref={canvasDraw => {
+                this.loadableCanvas = canvasDraw;
+                this.loadableCanvas.loadSaveData(item.img);
+            }}
+            canvasWidth={100}
+            canvasHeight={60}
+        />
+    }
+
     render() {
         return (
         <div>
@@ -120,8 +132,7 @@ class AvailableSignatures extends Component {
 
 }
 AvailableSignatures.PropTypes = {
-  count: PropTypes.int,
-  selectSignCallBack: PropTypes.func
+  signatureList: PropTypes.array,
 };
 
 export default AvailableSignatures;
