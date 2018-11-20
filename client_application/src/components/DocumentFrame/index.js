@@ -64,7 +64,7 @@ class DocumentFrame extends Component {
                         <Footer>
                             <Row>
                                 <Col xs={16}>
-                                    <SignatureApp />
+                                    <SignatureApp/>
                                 </Col>
                                 <Col xs={8}>
                                     <Row style={{margin: '10px'}}><Button type="primary" size="large" block>Accept</Button></Row>
