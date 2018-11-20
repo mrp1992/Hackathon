@@ -6,17 +6,28 @@ import tools from "../../index.css";
 
 class SignatureApp extends Component {
 
-    state = {
-        color: "#000000",
-        width: 350,
-        height: 150
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            color: "#000000",
+            width: this.props.canvasWidth,
+            height: this.props.canvasHeight,
+            showSave: this.props.showSave,
+            showClear: this.props.showClear,
+            signRef: this.saveableCanvas,
+        };
+    }
 
     saveToLocalStorage = () => {
+        console.log("reached");
         var allEntries = JSON.parse(localStorage.getItem("savedSignature")) || [];
         allEntries.push(this.saveableCanvas.getSaveData());
         localStorage.setItem("savedSignature",JSON.stringify(allEntries));
     };
+
+    clearSign = () => {
+        this.saveableCanvas.clear();
+    }
 
     componentWillMount() {
 
@@ -35,19 +46,21 @@ render() {
         />
 
         <div className={tools}>
-          <button
+          {this.state.showSave && (<button
             onClick={() => {this.saveToLocalStorage();
             }}
           >
             Save
-          </button>
-          <button
+          </button>)}
+
+
+          {this.state.showClear && (<button
             onClick={() => {
               this.saveableCanvas.clear();
             }}
           >
             Clear
-          </button>
+          </button>)}
         </div>
 
       </div>
@@ -56,10 +69,13 @@ render() {
 }
 
 SignatureApp.PropTypes = {
-    saveCallBack: PropTypes.func,
+    saveToLocalStorage: PropTypes.func,
+    signRef: PropTypes.object,
     brushColor: PropTypes.string,
     canvasWidth: PropTypes.int,
-    canvasHeight: PropTypes.int
+    canvasHeight: PropTypes.int,
+    showSave: PropTypes.bool,
+    showClear: PropTypes.bool,
 };
 
 export default SignatureApp;

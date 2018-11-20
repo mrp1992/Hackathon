@@ -72,29 +72,31 @@ class AvailableSignatures extends Component {
     }
 
     drawCanvas = (item) => {
-        return <CanvasDraw
-            disabled
-            ref={canvasDraw => {
-                this.loadableCanvas = canvasDraw;
-                this.loadableCanvas.loadSaveData(item.img);
-            }}
-            canvasWidth={100}
-            canvasHeight={60}
-        />
+        return (<CanvasDraw
+          disabled
+          ref={canvasDraw => {
+                            this.loadableCanvas = canvasDraw;
+                            if (this.loadableCanvas) {
+                                this.loadableCanvas.loadSaveData(item.img);
+                            }
+                            }}
+          canvasWidth={100}
+          canvasHeight={60}
+        />);
     }
 
     render() {
         return (
         <div>
             <Drawer
-                  title="Available Signatures"
+                  title="Recent Signatures"
                   placement={this.state.placement}
                   closable={true}
                   onClose={this.onClose}
                   visible={this.state.visible}>
                 { this.state.visible &&
                     <List
-                        locale="{emptyText: 'No signatures are available.'}"
+                        locale="{emptyText: 'No recent signatures are available.'}"
                         itemLayout="vertical"
                         size="small"
                         dataSource={this.state.listData}
@@ -102,29 +104,17 @@ class AvailableSignatures extends Component {
                             <List.Item
                                 key={item.title}>
                                 <List.Item.Meta
-                                    avatar={<Avatar src={item.img} />}
+                                    avatar={<Avatar icon="edit" />}
                                     title={<a href={item.href}>{item.title}</a>}
                                     description={item.description}
                                 />
-
-                                    <CanvasDraw
-                                          disabled
-                                          ref={canvasDraw => {
-                                                            this.loadableCanvas = canvasDraw;
-                                                            if (this.loadableCanvas) {
-                                                                this.loadableCanvas.loadSaveData(item.img);
-                                                            }
-                                                            }}
-                                          canvasWidth={100}
-                                          canvasHeight={60}
-                                        />
-
+                                    {this.drawCanvas(item)}
                             </List.Item>
                         )}
                     />
                 }
                 </Drawer>
-                <Button type="primary" onClick={() => this.toggleDrawer(this.state.visible)}>Available Signatures</Button>
+                <Button type="primary" onClick={() => this.toggleDrawer(this.state.visible)}>Recent Signatures</Button>
 
             </div>
         );

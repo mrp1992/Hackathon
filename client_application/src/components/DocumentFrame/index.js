@@ -16,8 +16,10 @@ class DocumentFrame extends Component {
 
         this.state = {
             pdfPageNumber: 1,
-            pdfPages: null
+            pdfPages: null,
         };
+
+        this.signatureAppRef = React.createRef();
     };
 
     renderDocument = (document) => {
@@ -48,6 +50,14 @@ class DocumentFrame extends Component {
         }
     };
 
+    accept = () => {
+        this.signatureAppRef.current.saveToLocalStorage();
+    }
+
+    reject = () => {
+        this.signatureAppRef.current.clearSign();
+    }
+
     render() {
         return(
             <Row>
@@ -66,11 +76,11 @@ class DocumentFrame extends Component {
                         <Footer>
                             <Row>
                                 <Col xs={18}>
-                                    <SignatureApp/>
+                                    <SignatureApp ref={this.signatureAppRef} showSave={false} showClear={false} canvasWidth={400} canvasHeight={200} acceptFn={this.childAccept} signRef={this.mySignRef}/>
                                 </Col>
                                 <Col xs={4} offset={2}>
-                                    <Row style={{margin: '10px'}}><Button type="primary" size="large" block>Accept</Button></Row>
-                                    <Row style={{margin: '10px'}}><Button type="primary" size="large" block>Reject</Button></Row>
+                                    <Row style={{margin: '10px'}}><Button type="primary" size="large" block onClick={this.accept}>Accept</Button></Row>
+                                    <Row style={{margin: '10px'}}><Button type="primary" size="large" block onClick={this.reject}>Reject</Button></Row>
                                 </Col>
                             </Row>
                         </Footer>
