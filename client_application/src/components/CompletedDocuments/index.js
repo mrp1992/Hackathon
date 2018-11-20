@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Divider } from 'antd';
+import { Row } from 'antd';
 
 class CompletedDocuments extends Component {
 

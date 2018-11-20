@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import CanvasDraw from "react-canvas-draw";
 
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import { List, Avatar } from 'antd';
 
 const listData = [];
@@ -29,6 +29,18 @@ allEntries.forEach((entry) => {
 
 class AvailableSignatures extends Component {
 
+    drawCanvas = (item) => {
+        return <CanvasDraw
+            disabled
+            ref={canvasDraw => {
+                this.loadableCanvas = canvasDraw;
+                this.loadableCanvas.loadSaveData(item.img);
+            }}
+            canvasWidth={100}
+            canvasHeight={60}
+        />
+    }
+
     render() {
         return (
             <List
@@ -46,19 +58,11 @@ class AvailableSignatures extends Component {
                     <List.Item
                         key={item.title}>
                         <List.Item.Meta
-                            avatar={<Avatar src={item.img} />}
+                            avatar={<Avatar icon="edit"/>}
                             title={<a href={item.href}>{item.title}</a>}
                             description={item.description}
                         />
-                    <CanvasDraw
-                              disabled
-                              ref={canvasDraw => {
-                                                this.loadableCanvas = canvasDraw;
-                                                this.loadableCanvas.loadSaveData(item.img);
-                                                }}
-                              canvasWidth={100}
-                              canvasHeight={60}
-                            />
+                        {this.drawCanvas(item)}
                     </List.Item>
                 )}
             />

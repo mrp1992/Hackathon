@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import AvailableSignatures from '../AvailableSignatures';
-import {Card, Row, Col, Divider} from 'antd';
+import {Card, Row, Col } from 'antd';
 import PropTypes from 'prop-types';
 import DocumentFrame from '../DocumentFrame';
 import Image from '../resources/image.png';
@@ -70,13 +70,13 @@ class PendingDocuments extends Component {
     getThumbnail = (type) => {
         switch(type) {
             case 'PDF':
-                return <img width={'80px'} height={'100px'} alt="logo" src={PDF} />;
+                return <img width={'80px'} height={'200px'} alt="logo" src={PDF} />;
             case 'IMG':
-                return <img width={'80px'} height={'100px'} alt="logo" src={Image} />;
+                return <img width={'80px'} height={'200px'} alt="logo" src={Image} />;
             case 'HTML':
-                return <img width={'80px'} height={'100px'} alt="logo" src={HTML} />;
+                return <img width={'80px'} height={'200px'} alt="logo" src={HTML} />;
             default:
-                return <img width={'80px'} height={'100px'} alt="logo" src={Document} />;
+                return <img width={'80px'} height={'200px'} alt="logo" src={Document} />;
         }
     }
 
@@ -88,7 +88,7 @@ class PendingDocuments extends Component {
                     return <div style={{padding: '10px'}}>
                                 <Card
                                 hoverable
-                                style={{ width: 120 }}
+                                style={{ width: 240 }}
                                 cover={this.getThumbnail(item.type)}
                                 onClick={() => this.openDocument(item)}
                             >

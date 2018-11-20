@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Card, Divider, Button, Row, Col, Layout } from 'antd';
 import Iframe from 'react-iframe';
 import SignatureApp from '../SignatureApp';
+import { base64ToString } from './services';
+
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
@@ -63,10 +65,10 @@ class DocumentFrame extends Component {
                         </Content>
                         <Footer>
                             <Row>
-                                <Col xs={16}>
+                                <Col xs={18}>
                                     <SignatureApp/>
                                 </Col>
-                                <Col xs={8}>
+                                <Col xs={4} offset={2}>
                                     <Row style={{margin: '10px'}}><Button type="primary" size="large" block>Accept</Button></Row>
                                     <Row style={{margin: '10px'}}><Button type="primary" size="large" block>Reject</Button></Row>
                                 </Col>
